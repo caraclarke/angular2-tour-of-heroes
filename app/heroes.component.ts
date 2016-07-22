@@ -75,8 +75,7 @@ import { HeroService } from './hero.service';
 
     <my-hero-detail [hero]="selectedHero"></my-hero-detail>
   `,
-  directives: [HeroDetailComponent],
-  providers: [HeroService]
+  directives: [HeroDetailComponent]
 })
 
 // export HeroesComponent so we can import it elsewhere in application
