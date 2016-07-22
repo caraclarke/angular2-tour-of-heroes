@@ -19,3 +19,9 @@
 *Angular is modular* &mdash; collection of library modules each made of up several related features used to build an application
 
 multi-line strings need backticks instead of quotes
+
+# Router Outlet
+
+tell router where to display component by adding <router-outlet> marker tags to bottom of template
+
+RouterOutlet is in ROUTER_DIRECTIVES. Router displays each component immediately below <router-outlet> as app is navigated through

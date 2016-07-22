@@ -1,8 +1,11 @@
 import { bootstrap }    from '@angular/platform-browser-dynamic';
 import { AppComponent } from './app.component';
+import { appRouterProviders } from './app.routes';
 
 // bootstrapping is platform-specific
-bootstrap(AppComponent);
+bootstrap(AppComponent, [
+  appRouterProviders
+]);
 
 /*
 
@@ -12,5 +15,7 @@ bootstrap(AppComponent);
   - angular browser bootstrap function
   - application root component
 2. Call boostrap with AppComponent
+
+Component Router is a service. Need to import appRouterProviders that contain configured router
 
 */
