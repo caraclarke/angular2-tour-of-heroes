@@ -18,4 +18,4 @@
 
 *Angular is modular* &mdash; collection of library modules each made of up several related features used to build an application
 
-multi-line templates in components need backticks instead of quotes
+multi-line strings need backticks instead of quotes
