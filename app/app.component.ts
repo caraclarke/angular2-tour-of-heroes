@@ -1,11 +1,9 @@
 // when we need something from a module or library we import it
 // here importing angular2 core so component code can access @Component decorator
 import {Component} from '@angular/core';
-
-export class Hero {
-  id: number;
-  name: string;
-}
+// hero property is an Input
+import { Hero } from './hero';
+import {HeroDetailComponent} from './hero-detail.component';
 
 // decorator function that takes a metadata object as argument
 // allows us to associate metadata with component data
@@ -73,15 +71,9 @@ export class Hero {
       </li>
     </ul>
 
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name" />
-      </div>
-    </div>
-  `
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+  `,
+  directives: [HeroDetailComponent]
 })
 
 // export AppComponent so we can import it elsewhere in application
@@ -121,6 +113,10 @@ let keyword is what identifies hero as template input veriable, can now referenc
 *click event* - parenthesis identify li click event as target. hero var passed in is same one we previously defined for ngFor
 
 [] syntax for *property binding* - binding that allows data flows one way from data source to a property of the class
+
+Angular insists that we declare a *target* property to be an *input* property. If we don't, Angular rejects the binding and throws an error.
+
+to coordinate app and hero-detail-component we have to bind the selectedHero proerty of AppComponent to HeroDetailComponent elements hero proerty through [hero]="selectedHero" <-- [] for property binding
 */
 
 // temp array of heroes
