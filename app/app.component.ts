@@ -14,6 +14,14 @@ export class Hero {
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
+
+    <h2>My Heroes</h2>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </li>
+    </ul>
+
     <h2>{{hero.name}} details!</h2>
     <div><label>id: </label>{{hero.id}}</div>
     <div>
@@ -26,6 +34,9 @@ export class Hero {
 // export AppComponent so we can import it elsewhere in application
 export class AppComponent {
 
+  // public property that exposes heroes for binding
+  public heroes = HEROES;
+
   title = "Tour of heroes";
   hero: Hero = {
     id: 1,
@@ -35,6 +46,7 @@ export class AppComponent {
 }
 
 /*
+
 **App Component Notes**
 
 all angular apps have at least one root component
@@ -47,6 +59,13 @@ component controlls view through associated template
 1. 1+ import statements to reference what we need
 2. @Component decorator that tells Angular what template to use and how to create component
 3. component class that controls appearance and behavior of view through template
+
+* prefix to ngFor is critical - indicates that the li element and its children are a master template
+
+quoted text means "take each hero in the heroes array, store it in the local hero variable, and make it available to the corresponding template instance"
+
+let keyword is what identifies hero as template input veriable, can now reference that var within template to access props
+
 */
 
 // temp array of heroes

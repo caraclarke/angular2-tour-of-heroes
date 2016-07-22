@@ -22,6 +22,8 @@ exports.Hero = Hero;
 // metadata tells angular how to create and use this component
 var AppComponent = (function () {
     function AppComponent() {
+        // public property that exposes heroes for binding
+        this.heroes = HEROES;
         this.title = "Tour of heroes";
         this.hero = {
             id: 1,
@@ -31,7 +33,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <h2>{{hero.name}} details!</h2>\n    <div><label>id: </label>{{hero.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\" />\n    </div>\n  "
+            template: "\n    <h1>{{title}}</h1>\n\n    <h2>My Heroes</h2>\n    <ul class=\"heroes\">\n      <li *ngFor=\"let hero of heroes\">\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n      </li>\n    </ul>\n\n    <h2>{{hero.name}} details!</h2>\n    <div><label>id: </label>{{hero.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\" />\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
@@ -39,6 +41,7 @@ var AppComponent = (function () {
 }());
 exports.AppComponent = AppComponent;
 /*
+
 **App Component Notes**
 
 all angular apps have at least one root component
@@ -51,6 +54,13 @@ component controlls view through associated template
 1. 1+ import statements to reference what we need
 2. @Component decorator that tells Angular what template to use and how to create component
 3. component class that controls appearance and behavior of view through template
+
+* prefix to ngFor is critical - indicates that the li element and its children are a master template
+
+quoted text means "take each hero in the heroes array, store it in the local hero variable, and make it available to the corresponding template instance"
+
+let keyword is what identifies hero as template input veriable, can now reference that var within template to access props
+
 */
 // temp array of heroes
 var HEROES = [
