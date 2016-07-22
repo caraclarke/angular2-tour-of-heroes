@@ -66,16 +66,20 @@ export class Hero {
 
     <h2>My Heroes</h2>
     <ul class="heroes">
-      <li *ngFor="let hero of heroes">
+      <li *ngFor="let hero of heroes"
+        (click)="onSelect(hero)"
+        [class.selected]="hero === selectedHero">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
 
-    <h2>{{hero.name}} details!</h2>
-    <div><label>id: </label>{{hero.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="hero.name" placeholder="name" />
+    <div *ngIf="selectedHero">
+      <h2>{{selectedHero.name}} details!</h2>
+      <div><label>id: </label>{{selectedHero.id}}</div>
+      <div>
+        <label>name: </label>
+        <input [(ngModel)]="selectedHero.name" placeholder="name" />
+      </div>
     </div>
   `
 })
@@ -83,14 +87,13 @@ export class Hero {
 // export AppComponent so we can import it elsewhere in application
 export class AppComponent {
 
-  // public property that exposes heroes for binding
-  public heroes = HEROES;
-
   title = "Tour of heroes";
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
+  heroes = HEROES;
+  selectedHero: Hero;
+
+  onSelect(hero: Hero) {
+    this.selectedHero = hero;
+  }
 
 }
 
@@ -109,12 +112,15 @@ component controlls view through associated template
 2. @Component decorator that tells Angular what template to use and how to create component
 3. component class that controls appearance and behavior of view through template
 
-* prefix to ngFor is critical - indicates that the li element and its children are a master template
+(*) prefix to ngFor is critical - indicates that the li element and its children are a master template
 
 quoted text means "take each hero in the heroes array, store it in the local hero variable, and make it available to the corresponding template instance"
 
 let keyword is what identifies hero as template input veriable, can now reference that var within template to access props
 
+*click event* - parenthesis identify li click event as target. hero var passed in is same one we previously defined for ngFor
+
+[] syntax for *property binding* - binding that allows data flows one way from data source to a property of the class
 */
 
 // temp array of heroes
