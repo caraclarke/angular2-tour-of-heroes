@@ -8,7 +8,10 @@ import { HeroesComponent } from './heroes.component';
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-    <a [routerLink]="['/heroes']">Heroes</a>
+    <nav>
+      <a [routerLink]="['/dashboard']">Dashboard</a>
+      <a [routerLink]="['/heroes']">Heroes</a>
+    </nav>
     <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES],
