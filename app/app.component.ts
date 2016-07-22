@@ -2,16 +2,29 @@
 // here importing angular2 core so component code can access @Component decorator
 import {Component} from '@angular/core';
 
+export class Hero {
+  id: number;
+  name: string;
+}
+
 // decorator function that takes a metadata object as argument
 // allows us to associate metadata with component data
 // metadata tells angular how to create and use this component
 @Component({
   selector: 'my-app',
-  template: '<h1>hey</h1>'
+  template: '<h1>{{title}}</h1> <h2>{{hero.name}}</h2>'
 })
 
 // export AppComponent so we can import it elsewhere in application
-export class AppComponent {}
+export class AppComponent {
+
+  title = "Tour of heroes";
+  hero: Hero = {
+    id: 1,
+    name: 'Windstorm'
+  };
+
+}
 
 /*
 **App Component Notes**
