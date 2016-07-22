@@ -17,3 +17,5 @@
 *Angular apps are modular* &mdash; many files each dedicated to a purpose
 
 *Angular is modular* &mdash; collection of library modules each made of up several related features used to build an application
+
+multi-line templates in components need backticks instead of quotes
