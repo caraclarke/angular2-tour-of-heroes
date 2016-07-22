@@ -1,9 +1,11 @@
 // when we need something from a module or library we import it
 // here importing angular2 core so component code can access @Component decorator
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // hero property is an Input
 import { Hero } from './hero';
 import {HeroDetailComponent} from './hero-detail.component';
+// import hero service
+import { HeroService } from './hero.service';
 
 // decorator function that takes a metadata object as argument
 // allows us to associate metadata with component data
@@ -73,15 +75,31 @@ import {HeroDetailComponent} from './hero-detail.component';
 
     <my-hero-detail [hero]="selectedHero"></my-hero-detail>
   `,
-  directives: [HeroDetailComponent]
+  directives: [HeroDetailComponent],
+  providers: [HeroService]
 })
 
 // export AppComponent so we can import it elsewhere in application
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  ngOnInit() {
+    this.getHeroes();
+  }
 
   title = "Tour of heroes";
-  heroes = HEROES;
+  heroes: Hero[];
   selectedHero: Hero;
+
+  // 1. Add constructor that defines a private property
+  // 2. add components providers metadata
+  //constructor itself does nothing
+  // angular now knows to supply instance of heroservice when creates new appcomponent
+  constructor(private heroService: HeroService) { }
+
+  getHeroes() {
+    this.heroes = this.heroService.getHeroes();
+  }
+
 
   onSelect(hero: Hero) {
     this.selectedHero = hero;
@@ -118,17 +136,3 @@ Angular insists that we declare a *target* property to be an *input* property. I
 
 to coordinate app and hero-detail-component we have to bind the selectedHero proerty of AppComponent to HeroDetailComponent elements hero proerty through [hero]="selectedHero" <-- [] for property binding
 */
-
-// temp array of heroes
-const HEROES: Hero[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
