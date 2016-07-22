@@ -11,3 +11,9 @@
   - `npm run typings` &ndash; runs the [typings tool](https://angular.io/docs/ts/latest/guide/typescript-configuration.html#!#typings) separately
 
   - `npm run postinstall` &ndash; called by npm automatically after it successfully completes package installation. This script installs the [TypeScript definition files](https://angular.io/docs/ts/latest/guide/typescript-configuration.html#!#typings) defined in typings.json
+
+# Angular apps
+
+*Angular apps are modular* &mdash; many files each dedicated to a purpose
+
+*Angular is modular* &mdash; collection of library modules each made of up several related features used to build an application
