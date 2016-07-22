@@ -11,7 +11,7 @@ import { HeroService } from './hero.service';
 // allows us to associate metadata with component data
 // metadata tells angular how to create and use this component
 @Component({
-  selector: 'my-app',
+  selector: 'my-heroes',
   styles: [`
     .selected {
       background-color: #CFD8DC !important;
@@ -79,8 +79,8 @@ import { HeroService } from './hero.service';
   providers: [HeroService]
 })
 
-// export AppComponent so we can import it elsewhere in application
-export class AppComponent implements OnInit {
+// export HeroesComponent so we can import it elsewhere in application
+export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
@@ -114,7 +114,7 @@ export class AppComponent implements OnInit {
 **App Component Notes**
 
 all angular apps have at least one root component
-named this one by convention - AppComponent
+named this one by convention - HeroesComponent
 hosts client user experience
 
 component controlls view through associated template
@@ -136,5 +136,5 @@ let keyword is what identifies hero as template input veriable, can now referenc
 
 Angular insists that we declare a *target* property to be an *input* property. If we don't, Angular rejects the binding and throws an error.
 
-to coordinate app and hero-detail-component we have to bind the selectedHero proerty of AppComponent to HeroDetailComponent elements hero proerty through [hero]="selectedHero" <-- [] for property binding
+to coordinate app and hero-detail-component we have to bind the selectedHero proerty of HeroesComponent to HeroDetailComponent elements hero proerty through [hero]="selectedHero" <-- [] for property binding
 */
